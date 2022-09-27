@@ -3,6 +3,7 @@ package hu.petrik.helloworld;
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Festmeny {
     private String cim;
@@ -67,9 +68,22 @@ public class Festmeny {
             }
               this.licitekSzama++;
               this.legutolsolicitIdeje=LocalDateTime.now();
+
     }
     public void licit(int mertek){
 
+
+
+    }
+    @Override
+    public String toString(){
+        DateTimeFormatter forumatum=DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return String.format("%s: %s (%s)\n"+
+                        "%s\n"+
+                        "%d $ - %s(összesen:%db\n",
+                this.festo,this.cim,this.stilus,
+                this.elkelt ?"elkelt":"nem kelt el",
+                this.legmagasabbLicit, this.legutolsolicitIdeje.format(forumatum), this.licitekSzama);
     }
 }
 
